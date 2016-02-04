@@ -8,8 +8,8 @@ class VegasOdds::CLI
 
   def opening_statement
     puts "How you doing friend. Ready to lose some money? jk jk. Lets checkout the best odds we have for you today:"
-    @sports = VegasOdds::Sports.now
-    @sports.each.with_index(1) {|sport, v| puts "#{v}.#{sport.name}"}
+    sports = VegasOdds::Sports.now
+    sports.each {|sport| puts "#{sport.name}"}
   end
 
   def odds
@@ -51,8 +51,10 @@ class VegasOdds::CLI
       if input == "yes"
         bet
       else input == "no"
-        opening_statement
+        football
       end
+    else input == "no"
+      opening_statement
     end
   end
 
